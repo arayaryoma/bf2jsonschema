@@ -2,5 +2,8 @@
   "name": "protobuf-to-jsonscheme",
   "description": "Convert .proto to JSON Schema",
   "version": "0.0.1",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.2.4"
+  }
 }
