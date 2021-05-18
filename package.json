@@ -1,5 +1,5 @@
 {
-  "name": "protobuf-to-jsonscheme",
+  "name": "pbf2jsonschema",
   "description": "Convert .proto to JSON Schema",
   "version": "0.0.1",
   "license": "MIT",
