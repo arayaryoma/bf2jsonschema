@@ -2,6 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 import { load, Message, ReflectionObject, Type } from "protobufjs";
 import { camelToKebab } from "./util/camel-to-kebab";
+import { JSONSchema7 as JsonSchema, JSONSchema7TypeName } from "json-schema";
 
 export async function convertFile(
   filepath: string,
@@ -34,3 +35,34 @@ convertFile(
 ).then(() => {
   process.exit(0);
 });
+
+function mapProtobufScalarTypesToJsonSchemaTypes(
+  protbufType: ScalarType
+): JSONSchema7TypeName {
+  switch (protbufType) {
+    case "float":
+    case "double":
+      return "number";
+
+    case "int32":
+    case "int64":
+    case "sint32":
+    case "sint64":
+    case "fixed32":
+    case "fixed64":
+    case "sfixed32":
+    case "sfixed64":
+    case "uint32":
+    case "uint64":
+      return "integer";
+
+    case "string":
+      return "string";
+
+    case "bytes":
+      return "array";
+
+    case "bool":
+      return "boolean";
+  }
+}
