@@ -1,0 +1,19 @@
+syntax = "proto2";
+
+message ToDoSearchRequest {
+    required string query = 1;
+    optional int32 page_number = 2;
+    optional int32 result_per_page = 3;
+}
+
+message ToDoSearchResponse {
+    message Result  {
+        repeated ToDoItem items = 1;
+    }
+}
+
+message ToDoItem {
+    required int64 id = 1;
+    required string title = 2;
+    optional string description = 3;
+}
